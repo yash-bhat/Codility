@@ -17,10 +17,12 @@ def solution(S):
         if s in braces.keys():
             open += s
         else:
-            if s == braces[open[-1]]:
+            if (open != []) and (s == braces[open[-1]]):
                 open.pop()
             else:
                 return 0
     
     if open == []:
         return 1
+    else:
+        return 0
