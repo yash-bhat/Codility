@@ -1,0 +1,14 @@
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(A, K):
+    # write your code in Python 3.6
+    n = len(A)
+
+    if K == 0 or n==0:
+        return A
+
+    if K >= n:
+        K = K%n
+
+    return A[n-K:]+A[:n-K]
