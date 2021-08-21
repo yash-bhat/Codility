@@ -1,0 +1,41 @@
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(N):
+    # write your code in Python 3.6
+
+    count = []
+    is_count = False
+    
+    def get_binary(curr_count,num,old_reminder,is_count):
+        r = num%2
+        q = num//2
+        if old_reminder == 1:
+            is_count = True
+
+        if is_count:
+            if r == 0:
+                curr_count += 1
+            else:
+                count.append(curr_count)
+                is_count = False
+                curr_count = 0
+
+
+        if q == 1 and is_count:
+            count.append(curr_count)
+            return count
+        elif q == 0:
+            return count
+        else:
+            return get_binary(curr_count,q,r,is_count)
+
+    res = get_binary(0,N,-99,is_count)
+    if len(res) > 0:
+        return max(res)
+    else:
+        return 0
+
+    
+
+    
