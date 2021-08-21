@@ -1,0 +1,42 @@
+# you can write to stdout for debugging purposes, e.g.
+# print("this is a debug message")
+
+def solution(N):
+    # write your code in Python 3.6
+    
+    def get_binary(num,res):
+        q = num//2
+        r = num%2
+        res += str(r)
+
+        if q in [0,1]:
+            res += str(q)
+            return res
+        else:
+            return get_binary(q,res)
+
+    bin_result = get_binary(N,'')
+    
+    count = []
+    curr_count = 0
+    is_count = False
+
+    for num in bin_result:
+        if num == '1':
+            is_count = True
+            count.append(curr_count)
+            curr_count = 0
+            continue
+
+        if is_count:
+            curr_count += 1
+
+
+    if len(count) > 0:
+        return max(count)
+    else:
+        return 0
+
+
+
+
